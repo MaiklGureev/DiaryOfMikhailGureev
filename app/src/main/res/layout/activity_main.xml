@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activitys.MainActivity">
 
 
     <LinearLayout
@@ -32,7 +32,7 @@
         android:layout_margin="8dp"
         android:elevation="1dp">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/time_intervals_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingVertical="2dp"

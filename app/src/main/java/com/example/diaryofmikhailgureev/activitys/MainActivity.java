@@ -1,17 +1,23 @@
-package com.example.diaryofmikhailgureev;
+package com.example.diaryofmikhailgureev.activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.Toast;
+
+import com.example.diaryofmikhailgureev.R;
+import com.example.diaryofmikhailgureev.enitys.Task;
+import com.example.diaryofmikhailgureev.adapters.TimeIntervalAdapter;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -32,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //find activity components
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.time_intervals_recycler_view);
         calendarView =  findViewById(R.id.calendar_view);
 
         //init variables
@@ -63,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==0){
-            Toast.makeText(this,"Задача добавлена!",Toast.LENGTH_LONG).show();
+            Intent myIntent = new Intent(this, AddNewTaskActivity.class);
+            this.startActivity(myIntent);
+            //Toast.makeText(this,"Задача добавлена!",Toast.LENGTH_LONG).show();
         }else if(item.getItemId()==1){
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(1);

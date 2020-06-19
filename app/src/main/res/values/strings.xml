@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Diary of Mikhail Gureev</string>
+    <string name="app_name">Ежедневник</string>
     <string name="title_activity_task_description">TaskDescriptionActivity</string>
 </resources>
