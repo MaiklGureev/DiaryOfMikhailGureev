@@ -12,10 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
-import android.widget.Toast;
 
 import com.example.diaryofmikhailgureev.R;
-import com.example.diaryofmikhailgureev.enitys.Task;
+import com.example.diaryofmikhailgureev.entities.Task;
 import com.example.diaryofmikhailgureev.adapters.TimeIntervalAdapter;
 
 import java.util.ArrayList;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         initCalendarView();
         updateRecyclerView(time);
 
-
     }
 
     @Override
@@ -85,19 +83,19 @@ public class MainActivity extends AppCompatActivity {
         Calendar timeFinish = new GregorianCalendar(2020,Calendar.JUNE,18,16,30);
         String title = "сходить в магазин";
         String description = "купить колбасы";
-        taskList.add(new Task(title,description,timeStart,timeFinish));
+        taskList.add(new Task(title,description,timeStart.getTime(),timeFinish.getTime()));
 
         Calendar timeStart2 = new GregorianCalendar(2020,Calendar.JUNE,18,10,00);
         Calendar timeFinish2 = new GregorianCalendar(2020,Calendar.JUNE,18,15,30);
         String title2 = "выйти погулять";
         String description2 = "пофотографироваться";
-        taskList.add(new Task(title2,description2,timeStart2,timeFinish2));
+        taskList.add(new Task(title2,description2,timeStart2.getTime(),timeFinish2.getTime()));
 
         Calendar timeStart3 = new GregorianCalendar(2020,Calendar.JUNE,19,10,30);
         Calendar timeFinish3 = new GregorianCalendar(2020,Calendar.JUNE,19,15,30);
         String title3 = "повидаться с другом";
         String description3 = "договориться о встрече с Васей";
-        taskList.add(new Task(title3,description3,timeStart3,timeFinish3));
+        taskList.add(new Task(title3,description3,timeStart3.getTime(),timeFinish3.getTime()));
     }
 
     public void initCalendarView(){

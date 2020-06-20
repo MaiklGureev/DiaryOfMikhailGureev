@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diaryofmikhailgureev.R;
-import com.example.diaryofmikhailgureev.enitys.Task;
-import com.example.diaryofmikhailgureev.enitys.TimeInterval;
+import com.example.diaryofmikhailgureev.entities.Task;
 
 import java.util.List;
 
