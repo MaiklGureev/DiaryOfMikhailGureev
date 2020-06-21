@@ -12,22 +12,22 @@ public class ConnectorToRealm {
 
     public static Realm getConnectionToDB(Context context) {
         Realm.init(context);
-        RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
+        RealmConfiguration config = new RealmConfiguration.Builder().name("realm2.realm").build();
         Realm.setDefaultConfiguration(config);
 
         if (realm==null) {
-            Log.i("getConnectionToDB", "создаю новый");
+            Log.i("ConnectorToRealm", "создаю новый");
             return realm = Realm.getDefaultInstance();
         }else if(realm.isClosed()){
-            Log.i("getConnectionToDB", "реалм закрылся,открываю");
+            Log.i("ConnectorToRealm", "реалм закрылся,открываю");
             return realm = Realm.getDefaultInstance();
         }
-        Log.i("getConnectionToDB", "отдаю старый");
+        Log.i("ConnectorToRealm", "отдаю старый");
         return realm;
     }
 
     public static void closeRealm() {
-        if (!realm.isClosed()) {
+        if (realm!=null &&!realm.isClosed()) {
             realm.close();
         }
     }

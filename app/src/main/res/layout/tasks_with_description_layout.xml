@@ -5,7 +5,7 @@
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="8dp">
 <LinearLayout
@@ -17,7 +17,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_view_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="Задача: сходить в магазин"
         android:textSize="20sp"
         android:textAlignment="center"
@@ -27,7 +27,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_view_description_and_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="Описание: купить колбасы и фруктов\nВремя: 12:00 - 14:00"
         android:textSize="20sp"
         android:layout_weight="50"/>

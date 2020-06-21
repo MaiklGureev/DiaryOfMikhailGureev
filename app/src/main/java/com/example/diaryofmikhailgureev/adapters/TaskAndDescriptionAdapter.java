@@ -1,16 +1,17 @@
 package com.example.diaryofmikhailgureev.adapters;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diaryofmikhailgureev.R;
+import com.example.diaryofmikhailgureev.activitys.AddOrEditTaskActivity;
 import com.example.diaryofmikhailgureev.entities.Task;
 
 import java.util.List;
@@ -42,9 +43,7 @@ public class TaskAndDescriptionAdapter extends RecyclerView.Adapter<TaskAndDescr
 
     static final class TaskAndDescriptionViewHolder extends RecyclerView.ViewHolder{
 
-        private int id;
-        private String title;
-        private String descriptionAndTime;
+        private Task taskOnHolder;
 
         private TextView textViewTitle;
         private TextView textViewDescriptionAndTime;
@@ -56,17 +55,19 @@ public class TaskAndDescriptionAdapter extends RecyclerView.Adapter<TaskAndDescr
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(),"Открыть окно для редактирования",Toast.LENGTH_SHORT).show();
+                        Intent myIntent = new Intent(v.getContext(), AddOrEditTaskActivity.class);
+                        myIntent.putExtra("task",taskOnHolder);
+                        myIntent.putExtra("typeNewAdding","edit");
+                        v.getContext().startActivity(myIntent);
+                    //Toast.makeText(v.getContext(),"Открыть окно для редактирования",Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
         public void bind(@NonNull Task task){
-            id = task.getId();
-            title = task.getFormattedTitle();
-            descriptionAndTime = task.getFormattedDescriptionAndTime();
-            textViewTitle.setText(title);
-            textViewDescriptionAndTime.setText(descriptionAndTime);
+            taskOnHolder = task;
+            textViewTitle.setText(taskOnHolder.getFormattedTitle());
+            textViewDescriptionAndTime.setText(taskOnHolder.getFormattedDescriptionAndTime());
         }
     }
 
