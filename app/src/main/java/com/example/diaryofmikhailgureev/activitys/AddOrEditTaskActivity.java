@@ -5,14 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,16 +20,12 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.diaryofmikhailgureev.R;
-import com.example.diaryofmikhailgureev.Realm.ConnectorToRealm;
 import com.example.diaryofmikhailgureev.Realm.RealmOperations;
 import com.example.diaryofmikhailgureev.entities.Task;
 import com.example.diaryofmikhailgureev.entities.TimeInterval;
-import com.google.android.material.bottomnavigation.BottomNavigationMenu;
-import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
-import java.util.List;
 
 public class AddOrEditTaskActivity extends AppCompatActivity {
 
@@ -77,6 +70,8 @@ public class AddOrEditTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = inputTextTitle.getText().toString();
                 String description = inputTextDescription.getText().toString();
+                dateAndTimeStart.set(Calendar.SECOND,00);
+                dateAndTimeFinish.set(Calendar.SECOND,00);
                 if (!title.isEmpty() && !description.isEmpty()&&datesIsCorrect()) {
                     if (!itIsEdit ) {
                         task = new Task(title, description, dateAndTimeStart, dateAndTimeFinish);
@@ -221,7 +216,6 @@ public class AddOrEditTaskActivity extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.delete_menu, menu);
-
         return true;
     }
 
@@ -233,7 +227,7 @@ public class AddOrEditTaskActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.action_back) {
 
         }
-        //onBackPressed();
+        onBackPressed();
         return true;
     }
 

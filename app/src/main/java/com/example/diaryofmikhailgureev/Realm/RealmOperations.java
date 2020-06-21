@@ -19,7 +19,7 @@ import io.realm.RealmResults;
 public class RealmOperations {
 
 
-    public static void createTask(Context context, final Task task) {
+    public synchronized static void createTask(Context context, final Task task) {
         Realm realm = ConnectorToRealm.getConnectionToDB(context);
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -44,7 +44,7 @@ public class RealmOperations {
 
     }
 
-    public static List<Task> getTasks(Context context) {
+    public synchronized static List<Task> getTasks(Context context) {
         final List<Task> tasks = new ArrayList<>();
         Realm realm = ConnectorToRealm.getConnectionToDB(context);
 
@@ -67,7 +67,7 @@ public class RealmOperations {
         return tasks;
     }
 
-    public static void updateTask(Context context, final Task task) {
+    public synchronized static void updateTask(Context context, final Task task) {
         Realm realm = ConnectorToRealm.getConnectionToDB(context);
 
         Log.i("RealmOperations", "taskForExecute = "+task.getId()+" "+task.getTitle());
@@ -90,7 +90,7 @@ public class RealmOperations {
 
     }
 
-    public static void deleteTask(Context context, final Task task) {
+    public synchronized static void deleteTask(Context context, final Task task) {
         Realm realm = ConnectorToRealm.getConnectionToDB(context);
         Log.i("RealmOperations", "deleteTask");
         realm.executeTransaction(new Realm.Transaction() {
@@ -109,7 +109,7 @@ public class RealmOperations {
 
     }
 
-    public static void dropDatabase(Context context) {
+    public synchronized static void dropDatabase(Context context) {
         Realm realm = ConnectorToRealm.getConnectionToDB(context);
         realm.executeTransaction(new Realm.Transaction() {
             @Override

@@ -10,7 +10,7 @@ public class ConnectorToRealm {
 
     private static Realm realm;
 
-    public static Realm getConnectionToDB(Context context) {
+    public synchronized static Realm getConnectionToDB(Context context) {
         Realm.init(context);
         RealmConfiguration config = new RealmConfiguration.Builder().name("realm2.realm").build();
         Realm.setDefaultConfiguration(config);
@@ -26,7 +26,7 @@ public class ConnectorToRealm {
         return realm;
     }
 
-    public static void closeRealm() {
+    public synchronized static void closeRealm() {
         if (realm!=null &&!realm.isClosed()) {
             realm.close();
         }
