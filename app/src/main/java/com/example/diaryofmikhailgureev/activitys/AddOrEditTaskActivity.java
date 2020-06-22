@@ -70,8 +70,10 @@ public class AddOrEditTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = inputTextTitle.getText().toString();
                 String description = inputTextDescription.getText().toString();
-                dateAndTimeStart.set(Calendar.SECOND,00);
-                dateAndTimeFinish.set(Calendar.SECOND,00);
+                dateAndTimeStart.set(Calendar.SECOND, 00);
+                dateAndTimeStart.set(Calendar.MILLISECOND, 00);
+                dateAndTimeFinish.set(Calendar.SECOND, 00);
+                dateAndTimeFinish.set(Calendar.MILLISECOND, 00);
                 if (!title.isEmpty() && !description.isEmpty()&&datesIsCorrect()) {
                     if (!itIsEdit ) {
                         task = new Task(title, description, dateAndTimeStart, dateAndTimeFinish);

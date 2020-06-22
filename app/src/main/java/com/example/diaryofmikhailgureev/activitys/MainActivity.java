@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         time.set(Calendar.HOUR_OF_DAY, 00);
         time.set(Calendar.MINUTE, 00);
         time.set(Calendar.SECOND, 00);
+        time.set(Calendar.MILLISECOND, 00);
 
         //init
         initTasks(taskList);
@@ -113,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 Calendar selectedTime = new GregorianCalendar(year, month, dayOfMonth);
                 selectedTime.set(Calendar.HOUR_OF_DAY, 00);
                 selectedTime.set(Calendar.MINUTE, 00);
+                time.set(Calendar.SECOND, 00);
+                time.set(Calendar.MILLISECOND, 00);
                 initTasks(taskList);
                 time = selectedTime;
                 updateRecyclerView(time);
