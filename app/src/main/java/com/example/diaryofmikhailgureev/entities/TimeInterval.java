@@ -115,8 +115,6 @@ public class TimeInterval implements Parcelable {
         //boolean after(Date date) - если объект класса Date содержит более позднюю дату, чем указано в параметре, то возвращается true
         //boolean before(Date date) - если объект класса Date содержит более раннюю дату, чем указано в параметре, то возвращается true
 
-        task.getTimeStart().set(Calendar.SECOND, 00);
-        task.getTimeFinish().set(Calendar.MILLISECOND, 00);
         timeStart.set(Calendar.SECOND, 00);
         timeFinish.set(Calendar.MILLISECOND, 00);
 
@@ -137,14 +135,18 @@ public class TimeInterval implements Parcelable {
             return true;
         }
 
-
-        if ((task.getTimeStart().before(timeStart) && task.getTimeFinish().after(timeStart))) {
+        if (timeStart.before(task.getTimeStart())&& timeFinish.after(task.getTimeStart())&&timeFinish.before(task.getTimeFinish())) {
             Log.i("timeAndDayIsRight", "условие 4 " + task.getTitle() + " " + getFormattedInterval());
             return true;
         }
 
-        if ((task.getTimeStart().before(timeFinish) && task.getTimeFinish().equals(timeFinish))) {
+        if ((task.getTimeStart().before(timeStart) && task.getTimeFinish().after(timeStart))) {
             Log.i("timeAndDayIsRight", "условие 5 " + task.getTitle() + " " + getFormattedInterval());
+            return true;
+        }
+
+        if ((task.getTimeStart().before(timeFinish) && task.getTimeFinish().equals(timeFinish))) {
+            Log.i("timeAndDayIsRight", "условие 6 " + task.getTitle() + " " + getFormattedInterval());
             return true;
         }
 
