@@ -19,3 +19,5 @@
 ### Особенности
 - Material Design
 - Realm Database
+
+https://youtu.be/HoOxTyxobMo
